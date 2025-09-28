@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Fatura na Hora</title>
+</head>
+<body>
+
+<h2>Controle de Clientes - Cabeleireira</h2>
+
+<div id="formulario">
+  <input type="text" id="nomeCliente" placeholder="Nome da Cliente">
+  <input type="text" id="servico" placeholder="Serviço(s)">
+  <input type="number" id="preco" placeholder="Preço" step="0.01">
+  <button onclick="adicionarCliente()">Adicionar Cliente</button>
+</div>
+
+<table id="tabelaClientes">
+  <thead>
+    <tr>
+      <th>Nome da Cliente</th>
+      <th>Serviço(s)</th>
+      <th>Preço</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<button onclick="gerarPDF()">Gerar PDF</button>
+
+<!-- jsPDF e jsPDF autoTable -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+<script>
+  const clientes = [];
+
+  function adicionarCliente() {
+    const nome = document.getElementById('nomeCliente').value;
+    const servico = document.getElementById('servico').value;
+    const preco = parseFloat(document.getElementById('preco').value);
+
+    if (!nome || !servico || isNaN(preco)) {
+      alert("Preencha todos os campos corretamente!");
+      return;
+    }
+
+    clientes.push({ nome, servico, preco });
+
+    const tbody = document.getElementById('tabelaClientes').querySelector('tbody');
+    const row = tbody.insertRow();
+    row.insertCell(0).innerText = nome;
+    row.insertCell(1).innerText = servico;
+    row.insertCell(2).innerText = preco.toFixed(2);
+
+    document.getElementById('nomeCliente').value = '';
+    document.getElementById('servico').value = '';
+    document.getElementById('preco').value = '';
+  }
+
+  function gerarPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.setFontSize(16);
+    doc.text("Fatura - Clientes", 14, 20);
+
+    const colunas = ["Nome da Cliente", "Serviço(s)", "Preço"];
+    const linhas = clientes.map(c => [c.nome, c.servico, `€${c.preco.toFixed(2)}`]);
+
+    doc.autoTable({
+      head: [colunas],
+      body: linhas,
+      startY: 30,
+      styles: { fontSize: 12 },
+      headStyles: { fillColor: [255, 255, 255], textColor: [0, 0, 0] } // fundo branco, texto preto
+    });
+
+    doc.save("fatura.pdf");
+  }
+</script>
+
+</body>
+</html>

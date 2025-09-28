@@ -1,0 +1,117 @@
+/* Geral */
+body { 
+  font-family: Arial, sans-serif; 
+  margin: 20px; 
+}
+
+h1 {
+  text-align: center;
+}
+
+/* Tabela */
+table { 
+  border-collapse: collapse;
+  width: 100%; 
+  margin-top: 5px; 
+}
+
+table, th, td {
+  border: 1px solid black;
+  padding: 8px; 
+  text-align: center; 
+}
+
+/* Inputs e selects */
+input, input[type="date"], input[type="number"], select { 
+  margin-right: 10px; 
+  width: 30%;
+  height: 20px;
+  padding: 5px;
+}
+
+/* Botão adicionar */
+#add {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+}
+
+/* Container do formulário + tabela */
+#suprema {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap; /* para responsividade em telas pequenas */
+}
+
+/* Formulário */
+.formulario {
+  flex: 1; /* menor que a tabela */
+  min-width: 250px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.formulario label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Tabela dentro do layout */
+.tabela {
+  flex: 2; /* maior que o formulário */
+  min-width: 300px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+/* Responsividade inputs dentro do formulário */
+.formulario input,
+.formulario select,
+input[type="number"],
+input[type="date"] {
+  width: 90%;
+  height: 30px;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* Responsividade geral para telas pequenas */
+@media (max-width: 600px) {
+  #suprema {
+    flex-direction: column;
+  }
+
+  .formulario, .tabela {
+    flex: 1;
+    width: 100%;
+  }
+}
+    .botoes-servicos button {
+    margin: 5px;
+    padding: 8px 12px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: all 0.2s;
+    }
+
+    .botoes-servicos button.selected {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+    }
+    .msgErro {
+    border: 2px solid red;   /* borda vermelha */
+    background-color: #ffe6e6; /* fundo levemente vermelho, opcional */
+    }
+
