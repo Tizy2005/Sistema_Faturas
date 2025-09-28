@@ -38,7 +38,15 @@ input, input[type="date"], input[type="number"], select {
   cursor: pointer;
   border: none;
 }
+#add:hover {
+  background-color: #45a049;
+}
 
+#mudanca {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  }
 /* Container do formulário + tabela */
 #suprema {
   display: flex;
@@ -46,6 +54,18 @@ input, input[type="date"], input[type="number"], select {
   flex-wrap: wrap; /* para responsividade em telas pequenas */
 }
 
+#gerarPDF{
+  background-color: #d51111;
+  color: white;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  margin-top: 10px;
+  }
+  #gerarPDF:hover{
+    background-color: #a50e0e;
+  }
 /* Formulário */
 .formulario {
   flex: 1; /* menor que a tabela */
@@ -107,6 +127,11 @@ input[type="date"] {
 
     .botoes-servicos button.selected {
     background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+    }
+    .botoes-servicos button:hover {
+      background-color: #4CAF50;
     color: white;
     border-color: #4CAF50;
     }

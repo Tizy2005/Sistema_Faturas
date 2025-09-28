@@ -10,7 +10,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
     <script src="script.js"></script>
-    <h1>Fatura na Hora</h1>
+    <div class="header" >
+        <h1>Fatura na Hora</h1>
+    <!-- <button id="mudanca"></button> -->
+    </div>
+    
     <div id="suprema">
         <div class="formulario">
         <label for="dataSemana">Semana (primeiro dia da semana):</label>
@@ -44,7 +48,7 @@
     <tbody>
     </tbody>
     </table>
-    <button onclick="gerarPDF()">Gerar PDF</button>
+    <button id="gerarPDF" onclick="gerarPDF()">Gerar PDF</button>
     </div> 
     </div>
     
